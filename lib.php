@@ -299,7 +299,7 @@ function block_completion_progress_get_activities($courseid, $config = null, $fo
                     'modulename' => $modulename,
                     'id'         => $cm->id,
                     'instance'   => $cm->instance,
-                    'name'       => format_string($cm->name),
+                    'name'       => $cm->name,
                     'expected'   => $cm->completionexpected,
                     'section'    => $cm->sectionnum,
                     'position'   => array_search($cm->id, $sections[$cm->sectionnum]),
@@ -637,7 +637,7 @@ function block_completion_progress_bar($activities, $completions, $config, $user
         $text = '';
         $text .= html_writer::empty_tag('img',
                 array('src' => $activity['icon'], 'class' => 'moduleIcon', 'alt' => '', 'role' => 'presentation'));
-        $text .= s(format_string($activity['name']));
+        $text .= $activity['name'];
         if (!empty($activity['link']) && (!empty($activity['available']) || $simple)) {
             $content .= $OUTPUT->action_link($activity['link'], $text, null, ['class' => 'action_link']);
         } else {
